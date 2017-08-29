@@ -22,26 +22,25 @@ $(document).ready(function() {
 
     // make a dancer with a random position
     var dancer = new dancerMakerFunction(
-      $("body").height() * Math.random(),
-      $("body").width() * Math.random(),
+      $('body').height() * Math.random(),
+      $('body').width() * Math.random(),
       Math.random() * 1000
     );
-    if (dancerMakerFunctionName === 'DrakeDancer'){
-    window.drakes.push(dancer);
-    } else if (dancerMakerFunctionName === 'SimpsonDancer'){
-    window.lisas.push(dancer);
+    if (dancerMakerFunctionName === 'DrakeDancer') {
+      window.drakes.push(dancer);
+    } else if (dancerMakerFunctionName === 'SimpsonDancer') {
+      window.lisas.push(dancer);
     }
     $('div.dancefloor').append(dancer.$node);
   });
   
   //work in progress
-  $('button').on('click', function(event){
+  $('button').on('click', function(event) {
     var left = 10;
     var bottom = 100;
-
-    for (var i = 0; i < 5; i++){
+    for (var i = 0; i < 5; i++) {
       $(window.drakes[i][0]).css('left', left);
       $(window.drakes[i][0]).css('bottom', bottom);
     }
-  })
+  });
 });

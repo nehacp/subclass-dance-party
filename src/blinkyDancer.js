@@ -21,7 +21,7 @@ BlinkyDancer.prototype.step = function() {
   var color = colors[Math.floor(Math.random() * colors.length)];
   var borderColor = {
     'border-color': color
-  }
+  };
   this.$node.css(borderColor);
   // toggle() is a jQuery method to show/hide the <span> tag.
   // See http://api.jquery.com/category/effects/ for this and
