@@ -42,3 +42,8 @@ body, a:link, a:visited, a:active{
 .simpsonDancer{
   position:absolute;
 }
+
+h1 {
+  text-align: center;
+  color: red;
+}

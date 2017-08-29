@@ -25,8 +25,3 @@ DrakeDancer.prototype.rotate = function(ang) {
   };
   this.$node.css(style);
 };
-
-DrakeDancer.prototype.jump = function(){
-  //drake should jump
-  this.$node.animate({})
-}

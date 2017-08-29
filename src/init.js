@@ -22,16 +22,21 @@ $(document).ready(function() {
 
     // get the maker function for the kind of dancer we're supposed to make
     var dancerMakerFunction = window[dancerMakerFunctionName];
-
+    var i = 1;
+    if (dancerMakerFunction === BlinkyDancer){
+      i = 10;
+    }
     // make a dancer with a random position
-    var dancer = new dancerMakerFunction(
-      $('body').height() * Math.random(),
-      $('body').width() * Math.random(),
-      Math.random() * 1000, count++
-    );
-    window.dancers.push(dancer);
+    for (j=0; j < i; j++){
+      var dancer = new dancerMakerFunction(
+        Math.abs($('body').height() * Math.random() - 261),
+        $('body').width() * Math.random(),
+        Math.random() * 1000, count++
+      );
+      window.dancers.push(dancer);
 
-    $('div.dancefloor').append(dancer.$node);
+      $('div.dancefloor').append(dancer.$node);
+    }
   });
 
   //work in progress
@@ -73,6 +78,16 @@ $(document).ready(function() {
     } else if ($this instanceof BlinkyDancer) {
       //expand size
       $this.reduce();
+    }
+  });
+  $(document).on('click', 'span', function(event){
+    $this = window.dancers[$(this).data().index]
+    //if drake
+    if (!($this instanceof BlinkyDancer)) {
+      var dancer = $this.findClosest();
+      console.log('this: ', $this, 'pair:', dancer);
+      dancer.jump();
+      $this.jump();
     }
   });
 });

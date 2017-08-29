@@ -36,15 +36,30 @@ Dancer.prototype.stop = function() {
   clearTimeout(this.timer);
 }
 
-Dancer.prototype.interact = function() {
-  var y = this.$node.css('top');
-  var x = this.$node.css('left');
-  var closest;
+Dancer.prototype.jump = function(){
+  console.log('drake jumps');
+  this.$node.animate({'top': this.top - 80 + 'px'}, 'fast');
+  this.$node.animate({'top': this.top + 80 + 'px'}, 'fast');
+}
+
+Dancer.prototype.findClosest = function() {
+  var thisY = this.top;
+  var thisX = this.left;
+  var closest = {};
+  closest.distance = Infinity;
+  closest.dancer;
   for (var i = 0; i < window.dancers.length; i++){
     var dancer = window.dancers[i];
-    var dancerX = dancer.$node.css('left');
+    var dancerX = dancer.left;
+    var dancerY = dancer.top
+
     if (dancer !== this && !(dancer instanceof BlinkyDancer) ){
-      var distance = Math.sqrt(y - dancer.)
+      var distance = Math.sqrt(Math.pow(thisY - dancerY, 2) + Math.pow(thisX - dancerX, 2));
+      if (distance < closest.distance){
+        closest.distance = distance;
+        closest.dancer = dancer;
+      }
     }
   }
+  return closest.dancer;
 }
