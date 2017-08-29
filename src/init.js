@@ -26,6 +26,7 @@ $(document).ready(function() {
     if (dancerMakerFunction === BlinkyDancer){
       i = 10;
     }
+    //debugger;
     // make a dancer with a random position
     for (j=0; j < i; j++){
       var dancer = new dancerMakerFunction(

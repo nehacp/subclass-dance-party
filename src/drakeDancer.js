@@ -1,11 +1,13 @@
-var DrakeDancer = function(top, left, timeBetweenSteps, id) {
-
-  Dancer.call(this, top, left, timeBetweenSteps, id);
-  this.$img = $('<img src="drake.png">');
-  this.$node.append(this.$img);
-  this.$node.addClass('drakeDancer');
-  this.angle = 20;
-};
+class DrakeDancer extends Dancer {
+  constructor(top, left, timeBetweenSteps, id) {
+    //Dancer.call(this, top, left, timeBetweenSteps, id);
+super();
+    this.$img = $('<img src="drake.png">');
+    this.$node.append(this.$img);
+    this.$node.addClass('drakeDancer');
+    this.angle = 20;
+  }
+}
 
 DrakeDancer.prototype = Object.create(Dancer.prototype);
 DrakeDancer.prototype.constructor = DrakeDancer;
