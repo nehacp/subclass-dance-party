@@ -3,6 +3,7 @@ $(document).ready(function() {
 
   // window.drakes = [];
   // window.lisas = [];
+  var count = 0;
   $('.addDancerButton').on('click', function(event) {
     /* This function sets up the click handlers for the create-dancer
      * buttons on dancefloor.html. You should only need to make one small change to it.
@@ -26,18 +27,13 @@ $(document).ready(function() {
     var dancer = new dancerMakerFunction(
       $('body').height() * Math.random(),
       $('body').width() * Math.random(),
-      Math.random() * 1000
+      Math.random() * 1000, count++
     );
-
     window.dancers.push(dancer);
-    // if (dancerMakerFunctionName === 'DrakeDancer') {
-    //   window.drakes.push(dancer);
-    // } else if (dancerMakerFunctionName === 'SimpsonDancer') {
-    //   window.lisas.push(dancer);
-    // }
+
     $('div.dancefloor').append(dancer.$node);
   });
-  
+
   //work in progress
   $('button').on('click', function(event) {
     window.dancers.forEach(dancer => {
@@ -45,11 +41,38 @@ $(document).ready(function() {
         dancer.$node.css({'top': 'auto','bottom': '0px'});
       }
     });
-
-      // var left = 10;
-      // var bottom = 100;
-      // for (var i = 0; i < 5; i++) {
-      //   $(window.drakes[i][0]).css('left', left);
-      //   $(window.drakes[i][0]).css('bottom', bottom);
+  });
+  // on mouseover event
+  $(document).on('mouseover', 'span', function(event){
+    $this = window.dancers[$(this).data().index]
+    //if drake
+    if ($this instanceof DrakeDancer) {
+      //activate drake jump
+      $this.stop();
+      //if lisas
+    } else if ($this instanceof SimpsonDancer) {
+      //she stops moving
+      $this.stop();
+      //if blinkyDancer
+    } else if ($this instanceof BlinkyDancer) {
+      //expand size
+      $this.expand();
+    }
+  });
+  $(document).on('mouseleave', 'span', function(event){
+    $this = window.dancers[$(this).data().index]
+    //if drake
+    if ($this instanceof DrakeDancer) {
+      //activate drake jump
+      $this.step();
+      //if lisas
+    } else if ($this instanceof SimpsonDancer) {
+      //she stops moving
+      $this.step();
+      //if blinkyDancer
+    } else if ($this instanceof BlinkyDancer) {
+      //expand size
+      $this.reduce();
+    }
   });
 });

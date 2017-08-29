@@ -1,9 +1,8 @@
-var DrakeDancer = function(top, left, timeBetweenSteps) {
+var DrakeDancer = function(top, left, timeBetweenSteps, id) {
 
-  Dancer.call(this, top, left, timeBetweenSteps);
+  Dancer.call(this, top, left, timeBetweenSteps, id);
   this.$img = $('<img src="drake.png">');
   this.$node.append(this.$img);
-  this.$node.removeClass('dancer');
   this.$node.addClass('drakeDancer');
   this.angle = 20;
 };
@@ -26,3 +25,8 @@ DrakeDancer.prototype.rotate = function(ang) {
   };
   this.$node.css(style);
 };
+
+DrakeDancer.prototype.jump = function(){
+  //drake should jump
+  this.$node.animate({})
+}

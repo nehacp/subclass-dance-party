@@ -1,7 +1,8 @@
 // Creates and returns a new dancer object that can step
-var Dancer = function(top, left, timeBetweenSteps) {
+var Dancer = function(top, left, timeBetweenSteps, id) {
   // use jQuery to create an HTML <span> tag
-  this.$node = $('<span></span>');
+  this.$node = $('<span class="dancer"></span>');
+  this.$node.data('index', id);
   this.top = top;
   this.left = left;
   this.timeBetweenSteps = timeBetweenSteps;
@@ -17,7 +18,7 @@ var Dancer = function(top, left, timeBetweenSteps) {
 Dancer.prototype.step = function() {
   // the basic dancer doesn't do anything interesting at all on each step,
   // it just schedules the next step
-  setTimeout(this.step.bind(this), this.timeBetweenSteps);
+  this.timer = setTimeout(this.step.bind(this), this.timeBetweenSteps);
 };
 
 Dancer.prototype.setPosition = function(top, left) {
@@ -30,3 +31,20 @@ Dancer.prototype.setPosition = function(top, left) {
   };
   this.$node.css(styleSettings);
 };
+
+Dancer.prototype.stop = function() {
+  clearTimeout(this.timer);
+}
+
+Dancer.prototype.interact = function() {
+  var y = this.$node.css('top');
+  var x = this.$node.css('left');
+  var closest;
+  for (var i = 0; i < window.dancers.length; i++){
+    var dancer = window.dancers[i];
+    var dancerX = dancer.$node.css('left');
+    if (dancer !== this && !(dancer instanceof BlinkyDancer) ){
+      var distance = Math.sqrt(y - dancer.)
+    }
+  }
+}

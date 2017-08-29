@@ -1,5 +1,5 @@
-var SimpsonDancer = function(top, left, timeBetweenSteps) {
-  Dancer.call(this, top, left, timeBetweenSteps);
+var SimpsonDancer = function(top, left, timeBetweenSteps, id) {
+  Dancer.call(this, top, left, timeBetweenSteps, id);
   this.$img = $('<img src="lisa.gif">');
   this.$node.append(this.$img);
   this.$node.addClass('simpsonDancer');
@@ -31,3 +31,7 @@ SimpsonDancer.prototype.move = function() {
   };
   this.$node.css(style);
 };
+
+SimpsonDancer.stop = function() {
+  //lisa should stop moving
+}

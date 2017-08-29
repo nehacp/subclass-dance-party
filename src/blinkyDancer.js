@@ -1,7 +1,9 @@
-var BlinkyDancer = function(top, left, timeBetweenSteps) {
-  
-  Dancer.call(this, top, left, timeBetweenSteps);
-  this.$node.addClass('blinkyDancer');
+var BlinkyDancer = function(top, left, timeBetweenSteps, id) {
+
+  Dancer.call(this, top, left, timeBetweenSteps, id);
+  this.$node.addClass('dancer blinkyDancer');
+
+
   // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
   // so we must keep a copy of the old version of this function
 
@@ -28,3 +30,13 @@ BlinkyDancer.prototype.step = function() {
   // other effects you can use on a jQuery-wrapped html tag.
   this.$node.toggle();
 };
+
+BlinkyDancer.prototype.expand = function() {
+  //dot should expand
+  this.$node.css({'border': '30px solid', 'border-radius': '30px'});
+}
+
+BlinkyDancer.prototype.reduce = function() {
+  //dot should expand
+  this.$node.css({'border': '10px solid', 'border-radius': '10px'});
+}
