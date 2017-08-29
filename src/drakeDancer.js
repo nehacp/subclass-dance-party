@@ -14,7 +14,6 @@ DrakeDancer.prototype.constructor = DrakeDancer;
 DrakeDancer.prototype.oldStep = DrakeDancer.prototype.step;
 DrakeDancer.prototype.step = function() {
   this.oldStep();
-  debugger;
   this.angle *= -1;
   this.rotate(this.angle);
 
