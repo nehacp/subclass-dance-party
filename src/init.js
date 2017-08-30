@@ -26,7 +26,7 @@ $(document).ready(function() {
     if (dancerMakerFunction === BlinkyDancer){
       i = 10;
     }
-    //debugger;
+    
     // make a dancer with a random position
     for (j=0; j < i; j++){
       var dancer = new dancerMakerFunction(
@@ -39,8 +39,7 @@ $(document).ready(function() {
       $('div.dancefloor').append(dancer.$node);
     }
   });
-
-  //work in progress
+  //lineup dancers
   $('button').on('click', function(event) {
     window.dancers.forEach(dancer => {
       if (!(dancer instanceof BlinkyDancer)) {
@@ -48,7 +47,8 @@ $(document).ready(function() {
       }
     });
   });
-  // on mouseover event
+
+  //dancer on mouseover event
   $(document).on('mouseover', 'span', function(event){
     $this = window.dancers[$(this).data().index]
     //if drake
@@ -65,6 +65,7 @@ $(document).ready(function() {
       $this.expand();
     }
   });
+  //dancer on click event
   $(document).on('mouseleave', 'span', function(event){
     $this = window.dancers[$(this).data().index]
     //if drake
